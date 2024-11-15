@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中期経営計画ツール</title>
+  <link rel="stylesheet" href="./keikaku.css">
+  <!-- チャート操作 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- エクセル操作 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <!-- PDF操作 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>中期経営計画</h1>
+    <!-- ここからlabelを使ったリスト項目 -->
+    <div class="controls">
+      <label for="businessSelect">事業数:</label>
+      <select id="businessSelect">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <label for="yearSelect">表示年数:</label>
+      <select id="yearSelect">
+        <option value="3">3年</option>
+        <option value="4">4年</option>
+        <option value="5">5年</option>
+      </select>
+      <label for="intervalSelect">表示間隔:</label>
+      <select id="intervalSelect">
+        <option value="year">年次</option>
+        <option value="half">半期</option>
+        <option value="quarter">四半期</option>
+      </select>
+    </div>
+    <!-- ここからbuttonを使った項目 -->
+    <div class="controls">
+      <button id="saveButton">保存</button>
+      <button id="loadButton">ロード</button>
+      <button id="deleteButton">削除</button>
+      <button id="downloadImageButton">画像をDL</button>
+      <button id="downloadExcelButton">EXCELフォーマットDL</button>
+      <!-- <input type="file"> で、ファイルをアップロードするためのボックスを作成 -->
+      <input type="file" id="uploadExcel" accept=".xlsx" style="display: none;">
+      <button id="uploadExcelButton">EXCELアップロード</button>
+      <button id="downloadPDFButton">PDFをダウンロード</button>
+    </div>
+    <!-- <table class="input-table">で「input-table」という表を作る。ここで計画数値の入力項目を作る -->
+    <table class="input-table">
+      <!-- <thead>, <tbody>, <tfoot> で表の上、真ん中、下を分ける。<thead>は見出し項目、<tbody>は入力項目、<tfoot>は合計値が表記される -->
+      <thead>
+        <!-- <tr> で行を作り、<th>と<td>でセルを形成している -->
+        <tr id="headerRow">
+          <th>項目</th>
+        </tr>
+      </thead>
+      <!-- <tbody id="tableBody">は事業の名前や数値を入力するために使用する -->
+      <tbody id="tableBody"></tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td>合計</td>
+        </tr>
+      </tfoot>
+    </table>
+    <!-- チャートを描くためのスペースを設定する。 -->
+    <div class="chart-container">
+      <!-- jsでグラフを書くときに使いたいので、id="chart"で「chart」という名前をつける -->
+      <canvas id="chart"></canvas>
+    </div>
+    <script src="./keikaku.js"></script>
+  </div>
+</body>
+</html>

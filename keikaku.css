@@ -1,0 +1,248 @@
+/* 背景など全体の設定 */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  /* 背景をグラデーション */
+  background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  /* 画面全てのものを中央寄せ */
+  display: flex;
+  /* 内容を上下左右に中央寄せ */
+  justify-content: center;
+  align-items: center;
+  /* 高さ表示を画面いっぱいに設定 */
+  min-height: 100vh;
+}
+
+/* コンテンツとなる箱のスタイルを設定 */
+.container {
+  max-width: 100%;
+  width: 90%;
+  /* 箱の中に少しだけゆとりを持たせる */
+  padding: 25px;
+  /* 箱の具体的なデザインはここで設定 */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #80deea;
+  /* オブジェクトを中央寄せ */
+  text-align: center;
+}
+
+/* 見出しのデザイン */
+h1 {
+  text-align: center;
+  color: #004d40;
+  font-weight: 400;
+  font-size: 30px;
+  margin-bottom: 20px;
+  /* 文字の背景に135度の角度をつけた線形グラデーションを設定　。青緑⇨淡い緑に色が移り変わる。次のクリップと合わせることで、文字色をグラデーションにする。 */
+  background: linear-gradient(135deg, #4dd0e1, #b2ebf2, #80cbc4);
+  /* 文字の形に沿って背景をクリップする（切り取る）ことで、背景に指定されたグラデーションや画像をテキストの部分だけ表示する。 */
+  -webkit-background-clip: text;
+  /* テキストの色を透明にすることで、テキスト自体の色が見えなくなり、background-clipによって表示された背景のみが見えるようになる */
+  -webkit-text-fill-color: transparent;
+  /* テキストの各文字間の間隔を1.5ピクセルに設定 */
+  letter-spacing: 1.5px;
+  /* カジュアルで手書き風のフォントに設定 */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  /* 見出し文字について、水平、垂直、半径に透明度な黒で影をつけている */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  /* テキストの上下に10pxの余裕を持たせて、左右は余白を加えないことにした */
+  padding: 10px, 0;
+  /* テキストの下線 */
+  border-bottom: 3px solid #80cbc4;
+}
+
+/* ドロップダウンメニューとラベルのボックス設定 */
+.controls {
+  /* フレックスボックスで横並びにする */
+  display: flex;
+  /* 子要素（ラベルやボタン）が横幅の関係で並びきらない場合は、折り返し表示をする */
+  flex-wrap: wrap;
+  /* 子要素を中央に寄せる */
+  justify-content: center;
+  /* 子要素間に20pxの隙間を持たせる */
+  gap: 20px;
+  /* ボタンから表までの間で20pxの余白を持たせる */
+  margin-bottom: 20px;
+  /* 高さが異なる子要素を縦中央揃えにする。文字とメニューで縦幅が異なるので使用した */
+  align-items: center;
+}
+
+/* ドロップダウンメニュー横のテキストの装飾 */
+.controls label {
+  font-weight: bold;
+  color: #004d40;
+  font-size: 16px;
+  padding-right: 8px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* ドロップダウンメニューの装飾 */
+.controls select {
+  /* ドロップダウンメニューの内側に余白を設定 */
+  padding: 10px 15px;
+  /* ドロップダウンメニューに丸みを持たせる */
+  border-radius: 10px;
+  border: 2px solid #80deea;
+  background: linear-gradient(to right, #b2dfdb, #80deea);
+  color: #004d40;
+  font-weight: bold;
+  /* ホバー時に弱めのアニメーションを設定 */
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  /* ドロップダウンメニューに横幅最小値を設定することで、メニューのサイズを統一した */
+  min-width: 140px;
+  text-align: center;
+}
+
+/* ドロップダウンメニューをホバー時に、変色と拡大を設定 */
+.controls select:hover {
+  background: #4dd0e1;
+  border-color: #004d40;
+  /* ホバー時に指定値までスケール（拡大）する */
+  transform: scale(1.05);
+}
+
+/* ボタンのスタイル */
+.controls button {
+  /* ボタンの内側に余白を設定する */
+  padding: 10px 18px;
+  font-size: 14px;
+  /* 枠線をなくした */
+  border: none;
+  /* その代わり、ボタンを丸くして視認性を高めた */
+  border-radius: 12px;
+  /* ホバー時に、カーソルの形状が指マークに変形する */
+  cursor: pointer;
+  /* ボタンの横幅最小値を設定。サイズはドロップダウンメニューと揃えた */
+  min-width: 140px;
+  font-weight: bold;
+  color: #fff;
+  /* ホバー時にちょっとした動きを持たせた。 */
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  /* いつも通り、丸くしたので影をつけることにした */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンをホバー時に、拡大を設定 */
+.controls button:hover {
+  transform: scale(1.05);
+}
+
+/* ボタンそれぞれでカラーを分けた。全部グラデーションカラー。 */
+#saveButton {
+  background: linear-gradient(135deg, #f48fb1, #ce93d8);
+}
+
+#loadButton {
+  background: linear-gradient(135deg, #81d4fa, #4fc3f7);
+}
+
+#deleteButton {
+  background: linear-gradient(135deg, #ffab91, #ff8a65);
+}
+
+#downloadImageButton {
+  background: linear-gradient(135deg, #a5d6a7, #81c784);
+}
+
+#downloadExcelButton,
+#uploadExcelButton {
+  background: linear-gradient(135deg, #f3e5f5, #d1c4e9);
+}
+
+#downloadPDFButton {
+  background: linear-gradient(135deg, #ffe082, #ffd54f);
+}
+
+/* テーブル（入力項目）のスタイルを設定 */
+.table-container {
+  /* 仕様上、どうしても横長になるので、内容が横方向にはみ出したときに、自動でスクロールバーを表示することにした。 */
+  overflow-x: auto;
+  /* 上部に少しだけ距離を置いてみた */
+  margin-top: 20px;
+}
+
+.input-table {
+  /* containerの幅いっぱいにテーブルを並べることにした */
+  width: 100%;
+  /* テーブルの最小幅は1000pxに設定した */
+  min-width: 1000px;
+  /* 各列の幅を入力内容に応じて自動調整する設定。これが無いと、レイアウトがめちゃくちゃになる。 */
+  table-layout: auto;
+  background: linear-gradient(135deg, #e0f2f1, #e0f7fa);
+  border-radius: 10px;
+  /* テーブルから、内容がはみ出さないようにしている。スクロールバーと併用することで解決した。 */
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 入力箇所については、特にデザインアイデアが思い浮かばなかった */
+.input-table th,
+.input-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  min-width: 120px;
+}
+
+/* 「見出し」行の設定 */
+.input-table th {
+  background: linear-gradient(135deg, #80cbc4, #4db6ac);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 偶数行の背景色設定 */
+.input-table tr:nth-child(even) {
+  background-color: rgba(178, 223, 219, 0.7);
+}
+
+/* 奇数行の背景色設定 */
+.input-table tr:nth-child(odd) {
+  background-color: rgba(224, 242, 241, 0.7);
+}
+
+/* 「合計」行のレイアウト設定 */
+.total-row td {
+  font-weight: bold;
+  background-color: #b2ebf2;
+  color: #333;
+  background: linear-gradient(to right, #b2ebf2, #80deea);
+}
+
+/* 折れ線グラフの配置 */
+.chart-container {
+  margin-top: 30px;
+}
+
+/* 折れ線グラフのレイアウト。canvasタグで括っている箇所。 */
+canvas {
+  max-width: 100%;
+  height: 550px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* メディアクエリを使ってレスポンシブ対応。画面幅が768px以下になった時、ボタンとテーブルの表記を調整*/
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .controls button {
+    min-width: 100px;
+    font-size: 12px;
+  }
+
+  .input-table th,
+  .input-table td {
+    min-width: 100px;
+  }
+}
